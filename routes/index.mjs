@@ -1,28 +1,10 @@
 import express from 'express';
-import path from 'path';
-import Note from './../schemas/note.mjs';
+import {get, create, post } from './../controllers/index.controller.mjs';
 
 export const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.sendFile(path.resolve() + '/public/index.html');
-});
+router.get('/', get);
+router.post('/', post);
+router.get('/create', create);
 
-router.get('/create', (req, res) => {
-    res.sendFile(path.resolve() + '/public/create.html');
-});
-
-router.post('/', (req, res) => {
-    console.log('REQUEST: ', req.body);
-
-    var myData = new Note(req.body);
-
-    myData.save()
-        .then(item => {
-            res.send("item saved to database");
-        })
-        .catch(err => {
-            res.status(400).send("unable to save to database");
-        });
-
-});
+//router.get('/:id', product_controller.product_details);
