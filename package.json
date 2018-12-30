@@ -1,0 +1,23 @@
+{
+    "name": "notepad",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node --experimental-modules start.mjs",
+        "watch": "nodemon --experimental-modules start.mjs"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "dotenv": "^6.2.0",
+        "express": "^4.16.4",
+        "mongoose": "^5.4.1"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.9"
+    }
+}
