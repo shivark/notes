@@ -1,11 +1,15 @@
 import express from 'express';
 import path from 'path';
-import Note from './../models/note.mjs';
+import Note from './../schemas/note.mjs';
 
 export const router = express.Router();
 
 router.get('/', (req, res) => {
     res.sendFile(path.resolve() + '/public/index.html');
+});
+
+router.get('/create', (req, res) => {
+    res.sendFile(path.resolve() + '/public/create.html');
 });
 
 router.post('/', (req, res) => {
