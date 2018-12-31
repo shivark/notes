@@ -1,10 +1,10 @@
 import express from 'express';
-import {get, create, post } from './../controllers/index.controller.mjs';
+import { controller } from './../controllers/notes/index.mjs';
 
 export const router = express.Router();
 
-router.get('/', get);
-router.post('/', post);
-router.get('/create', create);
+router.get('/', controller.get);
+router.post('/', controller.post);
+router.get('/create', controller.create);
 
 //router.get('/:id', product_controller.product_details);
