@@ -1,19 +1,17 @@
 import path from 'path';
-import Note from './../schemas/note.mjs';
+import Note from './../models/note.mjs';
 
 export function get(req, res) {
-    var notes = Note.find({}, function(err, docs) {
+    //res.render(path.resolve() + '/views/index', { data: getNotes() });
+    Note.find({}, function(err, docs) {
         if (!err) {
-            //  console.log(docs);
-        } else { throw err; }
+            res.render(path.resolve() + '/views/index', { data: docs });
+        }
     });
-    // res.sendFile(path.resolve() + '/views/index.html');
-
-    res.render(path.resolve() + '/views/index.html', notes);
 }
 
 export function create(req, res) {
-    res.sendFile(path.resolve() + '/views/create.html');
+    res.render(path.resolve() + '/views/create');
 }
 
 export function post(req, res) {
@@ -22,11 +20,17 @@ export function post(req, res) {
 
     data.save()
         .then(item => {
-            //  res.send("item saved to database");
-            res.sendFile(path.resolve() + '/views/index.html');
+            res.render(path.resolve() + '/views/index', { notes: getNotes() });
         })
         .catch(err => {
             res.status(400).send("unable to save to database");
         });
+}
 
+async function getNotes() {
+
+    // const notes = [{ name: 'first note', note: 'hello' }, { name: 'second note', note: 'hello world' }];
+    //return notes;
+
+    return await Note.find({}).exec();
 }

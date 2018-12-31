@@ -7,15 +7,12 @@
 
 <body>
     <h1>Notes</h1>
-
-    <script>
-        var notes = "<%= notes %>";
-        console.log(notes);
-    </script>
     <ul>
-        <li>note 1</li>
-    </ul>
 
+    <% data.forEach(function(item) { %>
+    <li><%= item.name %> </li>
+<% }); %>
+    </ul>
     <a href="/create">Create note</a>
 
 </body>
